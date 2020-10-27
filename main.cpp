@@ -7,9 +7,9 @@
 #include "square_root_ispc.h"
 #include "square_root_serial.h"
 using namespace ispc;
-
+//extern void square_root_ispc(float* input, float* output, int count, int maxIter);
 extern void square_root_serial(float* input, float* output, int count, int maxIter);
-
+//extern void square_root_ispctask(float* input, float* output, int count, int maxIter);
 static void verifyResult(int N, float* result, float* gold) {
     for (int i=0; i<N; i++) {
         if (fabs(result[i] - gold[i]) > 1e-4) {
@@ -62,7 +62,7 @@ int main() {
     double minISPC = 1e30;
     for (int i = 0; i < 5; ++i) {
         double startTime = clock();
-        square_root_serial(input, output, count, maxIter);
+        square_root_ispc(input, output, count, maxIter);
         double endTime = clock();
         minISPC = std::min(minISPC, (endTime - startTime)/CLOCKS_PER_SEC);
     }
@@ -81,7 +81,7 @@ int main() {
     double minTaskISPC = 1e30;
     for (int i = 0; i < 3; ++i) {
         double startTime = clock();
-        square_root_serial(input, output, count, maxIter);
+        square_root_ispctask(input, output, count, maxIter);
         double endTime = clock();
         minTaskISPC = std::min(minTaskISPC, (endTime - startTime)/CLOCKS_PER_SEC);
     }

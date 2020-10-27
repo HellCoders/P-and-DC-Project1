@@ -38,7 +38,7 @@ task void square_root_ispc_task(uniform int span, uniform float input[], uniform
 export void square_root_ispctask(uniform float input[], uniform float output[], uniform int count, uniform int maxIter)
 {
 
-    uniform int span = count / 64;  // 64 tasks
+    uniform int span = count / 4;  // 64 tasks
 
     launch[count/span] square_root_ispc_task(span, input, output, count, maxIter);
 }
