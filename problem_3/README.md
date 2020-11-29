@@ -6,11 +6,13 @@ A multi-threaded implementation of a password cracker that can find the password
 
 A C++ compiler that supports c++11
 
-### Installing
+### Compiling
 
-Run the following command at the root problem_3 directory to generate a release build.
+if you use the "mariasfirstimage" image on a WINLAB sandbox1 node you will have to source the openssl lib to the script for compiling.
+just run the make_macos.sh script by typing this:
+
 ```
-make
+./make_macos.sh
 ```
 
 ## Running
@@ -19,16 +21,14 @@ The release executable is located at ./brute_forcer
 The command line arguments give two options for arguments, the first being an MD5 hash, and the second thread count.\
 For example:
 ```
-./brute_forcer 2ba56b8acc7fb4d0657532fb6f75b98a 8
+./brute_forcer a6fe881cecd3fb7660083aea35cce430 8
 ```
 
 ## Authors
 
-* **Khalid Akash**
-* **Brandon Smith**
-* **Suva Shahria**
-* **Ryan Morey**
+* **Shounak Rangwala**
+* **Imad-uddin Siddiqui**
+* **Amod Deo**
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](../LICENSE.md) file for details
+
