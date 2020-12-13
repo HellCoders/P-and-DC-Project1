@@ -193,10 +193,10 @@ void run_tests(int N_pre, int N_BLOCKS, int THREADS_PER_BLK) {
     double cpu_max = cpu_get_max(N, x);
     auto end = std::chrono::high_resolution_clock::now();
     auto dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    // cout << "CPU calculated max:" << fixed << cpu_max << endl;
+    cout << "CPU calculated max:" << fixed << cpu_max << "_____";
     // fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,max,cpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-    fprintf(stdout," ,%ld\n",cpu_max);
+    fprintf(stdout,"%d,%d,%d,max,cpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",cpu_max);
 
 
     // use GPU to calculate max
@@ -209,10 +209,11 @@ void run_tests(int N_pre, int N_BLOCKS, int THREADS_PER_BLK) {
     }
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "GPU calculated max:" << fixed << gpu_max << endl;
+    cout << "GPU calculated max:" << fixed << gpu_max << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,max,gpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-fprintf(stdout," ,%ld\n",gpu_max);
+    fprintf(stdout,"%d,%d,%d,max,gpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",gpu_max);
+
     //print_diff(cpu_max, gpu_max);
     //cout << endl;
 
@@ -221,10 +222,10 @@ fprintf(stdout," ,%ld\n",gpu_max);
     double cpu_min = cpu_get_min(N, x);
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "CPU calculated min:" << fixed << cpu_min << endl;
+    cout << "CPU calculated min:" << fixed << cpu_min << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,min,cpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-fprintf(stdout," ,%ld\n",cpu_min);
+    fprintf(stdout,"%d,%d,%d,min,cpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",cpu_min);
     // use GPU to calculate min
     start = std::chrono::high_resolution_clock::now();
     get_gpu_min<<<N_BLOCKS, THREADS_PER_BLK>>>(N, x, results);
@@ -235,10 +236,10 @@ fprintf(stdout," ,%ld\n",cpu_min);
     }
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "GPU calculated min:" << fixed << gpu_min << endl;
+    cout << "GPU calculated min:" << fixed << gpu_min << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,min,gpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-fprintf(stdout," ,%ld\n",gpu_min);
+    fprintf(stdout,"%d,%d,%d,min,gpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",gpu_min);
     //print_diff(cpu_min, gpu_min);
     //cout << endl;
 
@@ -247,10 +248,10 @@ fprintf(stdout," ,%ld\n",gpu_min);
     double cpu_mean = cpu_get_mean(N, x);
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "CPU calculated mean:" << fixed << cpu_mean << endl;
+    cout << "CPU calculated mean:" << fixed << cpu_mean << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,avg,cpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-fprintf(stdout," ,%ld\n",cpu_mean);
+    fprintf(stdout,"%d,%d,%d,avg,cpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",cpu_mean);
     // use GPU to calculate mean
     start = std::chrono::high_resolution_clock::now();
     get_gpu_mean<<<N_BLOCKS, THREADS_PER_BLK>>>(N, x, results);
@@ -262,10 +263,10 @@ fprintf(stdout," ,%ld\n",cpu_mean);
     double gpu_mean = gpu_mean_sum/(N_BLOCKS*THREADS_PER_BLK);
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "GPU calculated mean:" << fixed << gpu_mean << endl;
+    cout << "GPU calculated mean:" << fixed << gpu_mean << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,avg,gpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-fprintf(stdout," ,%ld\n",gpu_mean);
+    fprintf(stdout,"%d,%d,%d,avg,gpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",gpu_mean);
     //print_diff(cpu_mean, gpu_mean);
     //cout << endl;
 
@@ -274,10 +275,10 @@ fprintf(stdout," ,%ld\n",gpu_mean);
     double cpu_stddev = cpu_get_stddev(N, x);
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "CPU calculated std dev:" << fixed << cpu_stddev << endl;
+    cout << "CPU calculated std dev:" << fixed << cpu_stddev << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,dev,cpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
-fprintf(stdout," ,%ld\n",cpu_stddev);
+    fprintf(stdout,"%d,%d,%d,dev,cpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    //fprintf(stdout," ,%ld\n",cpu_stddev);
     // use GPU to calculate std dev
     start = std::chrono::high_resolution_clock::now();
     get_gpu_stddev<<<N_BLOCKS, THREADS_PER_BLK>>>(N, x, results);
@@ -289,14 +290,14 @@ fprintf(stdout," ,%ld\n",cpu_stddev);
     double gpu_stddev = sqrt(gpu_m2/N);
     end = std::chrono::high_resolution_clock::now();
     dur_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end-start);
-    //cout << "GPU calculated std dev:" << fixed << gpu_stddev << endl;
+    cout << "GPU calculated std dev:" << fixed << gpu_stddev << "_____";
     //fprintf(stdout, "Elapsed time %lld ns\n", dur_ns.count());
-    fprintf(stdout,"%d,%d,%d,dev,gpu,%lld",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
+    fprintf(stdout,"%d,%d,%d,dev,gpu,%lld\n",N,N_BLOCKS,THREADS_PER_BLK,dur_ns.count());
     /**
     print_diff(cpu_stddev, gpu_stddev);
     cout << endl;
     **/
-fprintf(stdout," ,%ld\n",gpu_stddev);
+    //fprintf(stdout," ,%ld\n",gpu_stddev);
     // use CPU to calculate all stats
     start = std::chrono::high_resolution_clock::now();
     stats my_stats = cpu_get_all(N, x);
